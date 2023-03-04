@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f1f6"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@mipmap/background"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:orientation="horizontal">
+
+
+        <com.example.clock.clock
+            android:id="@+id/clock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="13"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Time_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="35dp"
+                    android:text="2023" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:gravity="center"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="35dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/Time_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="35dp"
+                    android:text="02" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:gravity="center"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="35dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/Time_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="35dp"
+                    android:text="27" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Time_Hour_H"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/threedimensional"
+                    android:textSize="120dp"
+                    android:text="2" />
+
+                <TextView
+                    android:id="@+id/Time_Hour_L"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/threedimensional"
+                    android:textSize="120dp"
+                    android:text="3" />
+
+                <TextView
+                    android:id="@+id/Time_Sec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/threedimensional"
+                    android:textSize="120dp"
+                    android:layout_marginBottom="8dp"
+                    android:text=":" />
+
+                <TextView
+                    android:id="@+id/Time_Min_H"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/threedimensional"
+                    android:textSize="120dp"
+                    android:text="2" />
+
+                <TextView
+                    android:id="@+id/Time_Min_L"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/threedimensional"
+                    android:textSize="120dp"
+                    android:text="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Time_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center|top"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="25dp"
+                    android:text="星期日"/>
+
+                <TextView
+                    android:id="@+id/Time_week_E"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center|top"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:textSize="25dp"
+                    android:text=" " />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tbyear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|bottom"
+                    android:layout_weight="5"
+                    android:gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:text="甲子年"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/lunardate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|bottom"
+                    android:layout_weight="3"
+                    android:gravity="center|bottom"
+                    android:textColor="#FF000000"
+                    app:fontFamily="@font/whzc"
+                    android:text="闰二月初九"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
