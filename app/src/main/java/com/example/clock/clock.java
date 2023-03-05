@@ -111,6 +111,7 @@ public class clock extends View {
                 (float)(150*Math.cos(angle2radian(hour*30-90+(min*60+sec)/120))),
                 (float)(150*Math.sin(angle2radian(hour*30-90+(min*60+sec)/120))),tempPaint3);
 
+        canvas.translate(-2,-2);
         canvas.drawCircle(0f,0f,15,tempPaint);
 
         canvas.restore();//返回中心位置
