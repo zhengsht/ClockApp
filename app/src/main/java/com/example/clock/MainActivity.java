@@ -23,20 +23,18 @@ public class MainActivity extends AppCompatActivity {
     LunarDate mLunar = new LunarDate();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//初始化app
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);//继续之前app的状态
-        setContentView(R.layout.cover);//加载布局文件，作为初始界面显示
-        //去除状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //阻止休眠，设置窗体全屏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        setContentView(R.layout.cover);//加载布局文件，作为初始界面显示,启动界面
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置窗体全屏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//阻止休眠
 
-        Permission.verifyStoragePermissions(this);//申请存储权限
-
-        mHandler.sendEmptyMessageDelayed(INIT,1500);
+        mHandler.sendEmptyMessageDelayed(INIT,1500);//显示启动界面1.5s后开始app主页面初始化
     }
 
-    private void updatadate(){
+    //日期更新函数
+    private void updatedate(){
         ImageView bg = findViewById(R.id.bg);
         bg.setImageAlpha(60);
         int yyyy = Calendar.getInstance().get(Calendar.YEAR);
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         lunaryear.setText(mLunar.getLunarYear());
     }
 
+    //1s为周期，更新时间的消息请求
     private void initview(){
         Timer timer=new Timer();
         timer.schedule(new TimerTask() {
@@ -98,18 +97,16 @@ public class MainActivity extends AppCompatActivity {
         },0,1000);
     }
 
-
-
-
-    private Handler mHandler=new Handler(new Handler.Callback() {//自定义的一个消息处理对象，本活动私有的，入口参数为Callback()方法boolean的非空返回值
-        @Override                                                   //实际参数为 msg，返回false
-        public boolean handleMessage(Message msg) {//重写handleMessage
+    //消息处理函数
+    private Handler mHandler=new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
             switch (msg.what){
-                case INIT:
-                    setContentView(R.layout.activity_main);//加载布局文件，作为初始界面显示
-                    updatadate();
+                case INIT://初始化更新主界面
+                    setContentView(R.layout.activity_main);
+                    updatedate();
                     initview();
-                case MSG_TIME: // 2
+                case MSG_TIME: //更新时间显示
                     TextView clock1=findViewById(R.id.Time_Hour_H);//载入时间显示的组件
                     TextView clock2=findViewById(R.id.Time_Hour_L);//载入时间显示的组件
                     TextView clock3=findViewById(R.id.Time_Min_H);//载入时间显示的组件
@@ -132,21 +129,20 @@ public class MainActivity extends AppCompatActivity {
                     myclock.sec = sec;
                     if(hour>12) myclock.hour = hour -12;
                     myclock.invalidate();
-                    if(hour==0 && min==0 && sec==0) updatadate();
+                    //判断是否需要更新日期
+                    if(hour==0 && min==0 && sec==0) updatedate();
                     break;
             }
             return false;
         }
     });
 
-
-
     @Override
-    protected void onResume() { //pause to running
+    protected void onResume() {
         super.onResume();
         overridePendingTransition(0,0);
 
-    }//zst-- 在onResume()方法中注册广播，在onPause()中注销广播
+    }
 
     @Override
     protected void onPause() {

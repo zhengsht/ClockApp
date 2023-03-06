@@ -49,16 +49,15 @@ public class clock extends View {
         super.onDraw(canvas);
         float R = canvas.getWidth()/2-100;
         RectF myrect = new RectF(-R,-R,R,R);
-        canvas.translate(canvas.getWidth()/2,canvas.getHeight()/2);
+        canvas.translate(canvas.getWidth()/2,canvas.getHeight()/2);//原点移至画布中心
         canvas.save();//保存中心位置
         canvas.translate(5,5);
         canvas.save();//保存阴影偏移位置
-        canvas.drawArc(myrect,0,360,false,mPaint);//圆周
+        canvas.drawArc(myrect,0,360,false,mPaint);//画表盘圆周阴影
 
-        Paint tempPaint = new Paint(mPaint);//line
-        Paint tempPaint2 = new Paint(mPaint);//number
-
-        Paint tempPaint3 = new Paint(mPaint);//number
+        Paint tempPaint = new Paint(mPaint);//刻度阴影画笔
+        Paint tempPaint2 = new Paint(mPaint);//数值阴影画笔
+        Paint tempPaint3 = new Paint(mPaint);//指针阴影画笔
 
         tempPaint.setStrokeWidth(10);
         tempPaint2.setStrokeWidth(2);
@@ -67,6 +66,7 @@ public class clock extends View {
         tempPaint2.setARGB(200, 133, 133, 133);
         tempPaint3.setStrokeWidth(10);
 
+        //画刻度阴影
         int y = 1;
         Path path = new Path();
         path.addArc(new RectF(-(R+40),-(R+40),(R+40),(R+40)),(float)-63.5,300);
@@ -79,6 +79,8 @@ public class clock extends View {
         }
         canvas.restore();//返回阴影偏移位置
         canvas.save();//保存阴影偏移位置
+
+        //画数值阴影
         canvas.translate(-13,17);
         double angle = -60;
         for (int i=0;i < 9; i++){
@@ -96,6 +98,7 @@ public class clock extends View {
         }
         canvas.restore();//返回阴影偏移位置
 
+        //画指针阴影
         canvas.drawLine((float)(15*Math.cos(angle2radian(sec*6-90))),
                 (float)(15*Math.sin(angle2radian(sec*6-90))),
                 (float)(350*Math.cos(angle2radian(sec*6-90))),
@@ -117,10 +120,9 @@ public class clock extends View {
         canvas.restore();//返回中心位置
 
 
-        Paint tempPaint4 = new Paint(mPaint);//line
-        Paint tempPaint5 = new Paint(mPaint);//number
-
-        Paint tempPaint6 = new Paint(mPaint);//number
+        Paint tempPaint4 = new Paint(mPaint);//刻度画笔
+        Paint tempPaint5 = new Paint(mPaint);//数值画笔
+        Paint tempPaint6 = new Paint(mPaint);//指针画笔
 
         tempPaint4.setStrokeWidth(20);
         tempPaint5.setStrokeWidth(2);
@@ -131,8 +133,11 @@ public class clock extends View {
         tempPaint4.setARGB(255,122, 19, 255);
         tempPaint5.setARGB(255,122, 19, 255);
 
+        //画表盘圆周
         canvas.drawArc(myrect,0,360,false,tempPaint4);
         canvas.save();//保存中心位置
+
+        //画刻度
         tempPaint4.setStrokeWidth(10);
         for(int i=0; i < 12; i++)
         {
@@ -143,6 +148,8 @@ public class clock extends View {
         }
         canvas.restore();//返回中心位置
         canvas.save();//保存中心位置
+
+        //画数值
         canvas.translate(-13,17);
         y = 1;
         angle = -60;
@@ -161,6 +168,7 @@ public class clock extends View {
         }
         canvas.restore();//返回中心位置
 
+        //画指针
         tempPaint6.setARGB(255,0, 202, 248);
         canvas.drawLine((float)(15*Math.cos(angle2radian(sec*6-90))),
                 (float)(15*Math.sin(angle2radian(sec*6-90))),
